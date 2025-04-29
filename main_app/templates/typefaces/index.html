@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/typefaces/typeface-index.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+<section class="page-header">
+  <h1>Typeface List</h1>
+</section>
+
+<section class="card-container">
+  {% for typeface in typefaces %}
+    <div class="card">
+      <div class="card-content">
+        <div class="card-img-container">
+          <img src="{% static 'images/'|add:typeface.image %}" alt="{{ typeface.name }} image" />
+        </div>
+        <h2 class="card-title">{{ typeface.name }}</h2>
+        <p><strong>Designer:</strong> {{ typeface.designer }}</p>
+        <p><strong>Classification:</strong> {{ typeface.classification }}</p>
+        <a href="{{ typeface.link }}" target="_blank">Download Link</a>
+      </div>
+    </div>
+  {% endfor %}
+</section>
+
+{% endblock %}

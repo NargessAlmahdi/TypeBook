@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="homepage">
+  <h1>Welcome to TypeBook</h1>
+  <p>Your personal library for discovering, saving, and rating typefaces.</p>
+  <img src="{% static 'images/typebook-logo.svg' %}" alt="TypeBook Logo" />
+  <a href="{% url 'typeface-index' %}" class="btn">Browse Typefaces</a>
+</section>
+{% endblock %}

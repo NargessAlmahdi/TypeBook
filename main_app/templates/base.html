@@ -20,8 +20,10 @@
       </div>
       <nav>
         <ul>
-            <li><a href="/typefaces">All Typefaces</a></li>
-            <li><a href="/about">About</a></li>            
+            <li><a href="{% url 'typeface-index' %}">All Typefaces</a></li>
+            <li><a href="{% url 'typeface-create' %}">Add a Typeface</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+        
         </ul>
       </nav>
     </header>

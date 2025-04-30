@@ -1,3 +1,5 @@
 from django.contrib import admin
+from .models import Typeface, Rate
 
-# Register your models here.
+admin.site.register(Typeface)
+admin.site.register(Rate)

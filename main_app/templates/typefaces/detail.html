@@ -1,0 +1,65 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/typefaces/typeface-detail.css' %}" />
+{% endblock %} 
+
+{% block content %}
+<section class="typeface-container">
+  <div class="typeface-img">
+    <img src="{{ typeface.image.url }}" alt="{{ typeface.name }} preview" />
+  </div>
+  <div class="typeface-details">
+    <h1>{{ typeface.name }}</h1>
+    <h2>Designed by {{ typeface.designer }}</h2>
+    <p><strong>Classification:</strong> {{ typeface.classification }}</p>
+    <p><strong>Download:</strong> 
+      <a href="{{ typeface.link }}" target="_blank">{{ typeface.link }}</a>
+    </p>
+
+    <div class="typeface-actions">
+        <a href="{% url 'typeface-update' typeface.id %}" class="btn warn">Edit</a>
+        <a href="{% url 'typeface-delete' typeface.id %}" class="btn danger">Delete</a>
+      </div>
+
+      <div class="rates-container">
+        <section class="rates">
+          <div class="subsection-title">
+            <h2>Ratings & Notes</h2>
+          </div>
+
+          <h3>Add a Rating & Note</h3>
+          <form action="{% url 'add-rate' typeface.id %}" method="post" class="subsection-content" autocomplete="off">
+            {% csrf_token %} 
+            {{ rate_form.as_p }}
+            <button type="submit" class="btn submit">Add Rating</button>
+          </form>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Rating</th>
+                <th>Note</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for rate in typeface.rate_set.all %}
+                <tr>
+                  <td>{{ rate.get_rating_display }}</td>
+                  <td>{{ rate.note }}</td>
+                </tr>
+              {% empty %}
+                <tr>
+                  <td colspan="2">No ratings yet.</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </section>
+      </div>
+      
+
+  </div>
+</section>
+{% endblock %}
+

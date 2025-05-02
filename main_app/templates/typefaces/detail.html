@@ -1,5 +1,6 @@
 {% extends 'base.html' %} 
 {% load static %} 
+
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/typefaces/typeface-detail.css' %}" />
 {% endblock %} 
@@ -9,6 +10,7 @@
   <div class="typeface-img">
     <img src="{{ typeface.image.url }}" alt="{{ typeface.name }} preview" />
   </div>
+
   <div class="typeface-details">
     <h1>{{ typeface.name }}</h1>
     <h2>Designed by {{ typeface.designer }}</h2>
@@ -18,48 +20,66 @@
     </p>
 
     <div class="typeface-actions">
-        <a href="{% url 'typeface-update' typeface.id %}" class="btn warn">Edit</a>
-        <a href="{% url 'typeface-delete' typeface.id %}" class="btn danger">Delete</a>
-      </div>
+      <a href="{% url 'typeface-update' typeface.id %}" class="btn warn">Edit</a>
+      <a href="{% url 'typeface-delete' typeface.id %}" class="btn danger">Delete</a>
+    </div>
 
-      <div class="rates-container">
-        <section class="rates">
-          <div class="subsection-title">
-            <h2>Ratings & Notes</h2>
+    <div class="rates-container">
+      <section class="rates">
+        <div class="subsection-title">
+          <h2>Ratings & Notes</h2>
+        </div>
+
+
+        <h3>Rating and Notes</h3>
+        <form action="{% url 'add-rating-note' typeface.id %}" method="post" autocomplete="off" class="Rating-form">
+          {% csrf_token %}
+
+          <div class="form-row">
+            <label for="id_rating">Rating:</label>
+            {{ rating_form.rating }}
           </div>
 
-          <h3>Add a Rating & Note</h3>
-          <form action="{% url 'add-rate' typeface.id %}" method="post" class="subsection-content" autocomplete="off">
-            {% csrf_token %} 
-            {{ rate_form.as_p }}
-            <button type="submit" class="btn submit">Add Rating</button>
-          </form>
+          <div class="form-row">
+            <label for="id_note">Note:</label>
+            {{ note_form.note }}
+          </div>
 
-          <table>
-            <thead>
+          <button type="submit" class="btn submit">Submit</button>
+        </form>
+
+        <h3>All Notes</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Note</th>
+              <th>Date</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for note in typeface.note_set.all %}
               <tr>
-                <th>Rating</th>
-                <th>Note</th>
+                <td>{{ note.note }}</td>
+                <td>{{ note.created_at|date:"M d, Y" }}</td>
+                <td>
+                  {% if user == note.user %}
+                    <form method="POST" action="{% url 'delete-note' note.id %}">
+                      {% csrf_token %}
+                      <button type="submit" style="background: none; border: none; color: red; cursor: pointer;">✕</button>
+                    </form>
+                  {% endif %}
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {% for rate in typeface.rate_set.all %}
-                <tr>
-                  <td>{{ rate.get_rating_display }}</td>
-                  <td>{{ rate.note }}</td>
-                </tr>
-              {% empty %}
-                <tr>
-                  <td colspan="2">No ratings yet.</td>
-                </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-        </section>
-      </div>
-      
-
+            {% empty %}
+              <tr>
+                <td colspan="3">No notes yet.</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </section>
+    </div>
   </div>
 </section>
 {% endblock %}
-

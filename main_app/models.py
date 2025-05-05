@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 
+
 class Typeface(models.Model):
     CLASSIFICATION_CHOICES = [
         ('Serif', 'Serif'),
@@ -19,6 +20,9 @@ class Typeface(models.Model):
     classification = models.CharField(max_length=100, choices=CLASSIFICATION_CHOICES)
     image = models.ImageField(upload_to='typefaces/')
     link = models.URLField(max_length=200)
+    pairings = models.ManyToManyField('Pairing')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
 
     def __str__(self):
         return self.name

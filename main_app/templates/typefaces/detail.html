@@ -30,11 +30,9 @@
           <h2>Ratings & Notes</h2>
         </div>
 
-
         <h3>Rating and Notes</h3>
         <form action="{% url 'add-rating-note' typeface.id %}" method="post" autocomplete="off" class="Rating-form">
           {% csrf_token %}
-
           <div class="form-row">
             <label for="id_rating">Rating:</label>
             {{ rating_form.rating }}
@@ -80,6 +78,52 @@
         </table>
       </section>
     </div>
+
+    <!-- ✅ Class-Style Pairing Section -->
+    <section class="pairings">
+      <div class="subsection-title">
+        <h2>Pairings</h2>
+      </div>
+
+      <!-- Current Pairings -->
+      <h3>{{ typeface.name }}’s Pairings</h3>
+      <div class="subsection-content">
+        {% if typeface.pairings.count %}
+          {% for pairing in typeface.pairings.all %}
+            <div class="pairing-container">
+              <a href="{% url 'pairing-detail' pairing.id %}">
+                <p>{{ pairing.name }}</p>
+              </a>
+              <form action="{% url 'remove-pairing' typeface.id pairing.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn danger">Remove</button>
+              </form>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p class="no-pairings">{{ typeface.name }} doesn’t have any pairings yet!</p>
+        {% endif %}
+      </div>
+
+      <!-- Available Pairings -->
+      <h3>Available Pairings</h3>
+      <div class="subsection-content">
+        {% if pairings.count %}
+          {% for pairing in pairings %}
+            <div class="pairing-container">
+              <p>{{ pairing.name }}</p>
+              <form action="{% url 'assoc-pairing' typeface.id pairing.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn submit">Pair it</button>
+              </form>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p class="no-more">{{ typeface.name }} is already paired with all available pairings! 🎉</p>
+        {% endif %}
+      </div>
+    </section>
+
   </div>
 </section>
 {% endblock %}

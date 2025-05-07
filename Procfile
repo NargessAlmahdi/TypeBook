@@ -1,1 +1,1 @@
-web gunicorn typebook.wsgi:apllication --log-file -
+web: gunicorn typebook.wsgi:application --log-file -

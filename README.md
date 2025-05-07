@@ -9,9 +9,6 @@ _TypeBook is a personal tool for designers to save and organize their favorite t
 
 ## About
 
-
-[Deployed Link]()
-
 ### Features
 
 1. Save Typefaces

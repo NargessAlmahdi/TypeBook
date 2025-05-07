@@ -1,0 +1,1 @@
+web gunicorn typebook.wsgi:apllication --log-file -

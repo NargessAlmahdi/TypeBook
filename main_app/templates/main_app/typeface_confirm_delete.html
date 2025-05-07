@@ -11,7 +11,7 @@
 <form action="" method="post" class="form">
   {% csrf_token %}
   <a href="{% url 'typeface-detail' typeface.id %}" class="btn secondary">Cancel</a>
-  <button type="submit" class="btn danger">Yes - Delete!</button>
+  <button type="submit" class="btn danger">Delete!</button>
 </form>
 
 {% endblock %}

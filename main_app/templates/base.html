@@ -5,17 +5,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" type="image/png" href="{% static 'images/splash.svg' %}" />
     <title>TypeBook</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
-    {% block head %} 
-    {% endblock %}
+    {% block head %} {% endblock %}
   </head>
   <body>
     <header>
       <div class="header-logo-container">
         <a href="/">
-          <img src="{% static 'images/header-logo.svg' %}" alt="TypeBook Logo" />
+          <img src="{% static 'images/typebook-straightlogo.svg' %}" alt="TypeBook Logo" />
         </a>
       </div>
 
@@ -24,8 +25,8 @@
           {% if user.is_authenticated %}
             <li><a href="{% url 'typeface-index' %}">All Typefaces</a></li>
             <li><a href="{% url 'pairing-index' %}">All Pairings</a></li>
-            <li><a href="{% url 'typeface-create' %}">Add a Typeface</a></li>
-            <li><a href="{% url 'pairing-create' %}">Add a Pairing</a></li>
+            <li><a href="{% url 'typeface-create' %}">Add Typeface</a></li>
+            <li><a href="{% url 'pairing-create' %}">Add Pairing</a></li>
             <li><a href="{% url 'about' %}">About</a></li>
             <li>
               <form id="logout-form" method="post" action="{% url 'logout' %}">
@@ -36,7 +37,7 @@
           {% else %}
             <li><a href="{% url 'about' %}">About</a></li>
             <li><a href="{% url 'home' %}">Login</a></li>
-            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            <li><a href="{% url 'signup' %}">Sign up</a></li>
           {% endif %}
         </ul>
       </nav>

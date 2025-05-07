@@ -1,88 +1,62 @@
 .card-container {
-    padding: 0 40px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  
-  .card {
-    width: 224px;
-    height: 224px;
-    margin: 10px;
-    border: solid 2px;
-    box-shadow: var(--card-box-shadow);
-    position: relative;
-    overflow: hidden;
-    background-color: #fff;
-  }
-  
-  .card-bg {
-    opacity: 0.4;
-    position: absolute;
-    display: inline-flex;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-  
-  .card-content {
-    padding: 15px;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-    flex-direction: column;
-    z-index: 1;
-  }
-  
-  .card > a {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: inline-block;
-    text-decoration: none;
-    color: var(--text-color);
-  }
-  
-  .card h2 {
-    margin: 7px 0;
-    font-size: var(--font-xl);
-    z-index: 2;
-    text-align: right;
-  }
-  
-  .card p {
-    margin: 0;
-    font-size: var(--font-reg);
-  }
-  
-  .card img {
-    max-width: 100%;
-    max-height: 120px;
-    object-fit: contain;
-    margin-top: auto;
-    z-index: 2;
-  }
-  
-  .page-header {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .page-header h1 {
-    font-size: var(--font-xxl);
-  }
-  
-  .page-header > img {
-    margin-left: 10px;
-    max-height: 50px;
-  }
-  
-  .page-header > img:first-of-type {
-    margin-left: 15px;
-  }
-  
+  padding: 0 30px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.card {
+  width: 275px;
+  border: 1px solid white;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card-img-container {
+  width: 100%;
+  height: 220px;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.card-img-container img {
+  width: 100%; 
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid white;
+  display: block;
+}
+
+.card-content {
+  padding: 16x;
+  color: var(--text-color);
+  text-align: center;
+}
+
+.card-content h2 {
+  font-size: var(--font-xl);
+  margin: 0px 0 0;
+  padding-top: 30px;
+  padding-bottom: 20px;
+  color: var(--text-color);
+}
+
+.card a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.card-content h2 a {
+  color: inherit;
+  text-decoration: none;
+  pointer-events: none;
+}

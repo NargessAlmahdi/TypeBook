@@ -1,40 +1,120 @@
+.form-page {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0px 0px;
+  gap: 40px;
+}
+
+
+.form-section {
+  flex: 1;
+  max-width: 600px;
+}
+
+.graphic-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.graphic-section img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  object-fit: contain;
+}
+
 .form-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-  
-  table {
-    padding: 0 40px;
-    width: 100%;
-    border-spacing: 0 20px;
-  }
-  
-  th {
-    text-align: left;
-    padding: 6px 20px 0 0;
-    font-weight: normal;
-    vertical-align: top;
-    font-size: var(--font-reg);
-  }
-  
-  td {
-    max-width: 60%;
-  }
-  
-  td > * {
-    width: 100%;
-    padding: 2px 4px;
-    font-size: var(--font-l);
-  }
-  
-  td > textarea {
-    height: calc(4 * var(--font-l) + 8px);
-    font-family: inherit;
-  }
-  
-  .btn {
-    align-self: flex-end;
-    margin-right: 40px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+table {
+  padding: 0;
+  width: 100%;
+  border-spacing: 0 20px;
+}
+
+th {
+  text-align: left;
+  padding: 6px 0;
+  font-weight: normal;
+  vertical-align: top;
+  font-size: var(--font-l);
+}
+
+td {
+  width: 100%;
+}
+
+td > * {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: var(--font-l);
+  border-radius: 8px;
+  background-color: #111;
+  color: white;
+  border: 1px solid white;
+}
+
+td > textarea {
+  height: 120px;
+  font-family: inherit;
+  resize: vertical;
+}
+
+input[type="file"] {
+  padding: 10px;
+  background-color: #111;
+  border: 1px solid white;
+  color: white;
+}
+
+.btn {
+  margin-top: 20px;
+  padding: 10px 24px;
+  border-radius: 8px;
+  width: fit-content;
+  align-self: flex-start;
+}
+
+input[type="file"] {
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: var(--font-reg);
+  padding: 0;
+  margin-right: 12px; 
+  margin-top: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.helptext {
+  border: none;
+  background: none;  
+  font-size: 15px;
+  color: #bebebe;
+  margin-top: 4px;
+  display: block;
+}
+
+.form-container input,
+.form-container select,
+.form-container textarea {
+  max-width: 500px;
+}
+
+th {
+  padding-right: 20px;
+  vertical-align: text-top;
+}
+
+
+.graphic-section {
+  height: 700px;
+  width: 100%;
+}

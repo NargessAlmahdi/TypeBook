@@ -6,20 +6,29 @@
 {% endblock %} 
 
 {% block content %}
-  <div class="page-header">
-    {% if object %}
-      <h1>Edit {{ object.name }}</h1>
-    {% else %}
-      <h1>Add a Typeface Pairing</h1>
-    {% endif %}
+<div class="form-page">
 
+  <div class="form-section">
+    <div class="page-header">
+      {% if object %}
+        <h1>Edit {{ object.name }}</h1>
+      {% else %}
+        <h1>Add Pairing</h1>
+      {% endif %}
+    </div>
+
+    <form action="" method="post" class="form-container" enctype="multipart/form-data" autocomplete="off">
+      {% csrf_token %}
+      <table>
+        {{ form.as_table }}
+      </table>
+      <button type="submit" class="btn submit">Add</button>
+    </form>
   </div>
 
-  <form action="" method="post" class="form-container" enctype="multipart/form-data" autocomplete="off">
-    {% csrf_token %}
-    <table>
-      {{ form.as_table }}
-    </table>
-    <button type="submit" class="btn submit">Submit!</button>
-  </form>
+  <div class="graphic-section">
+    <img src="{% static 'images/form-image.svg' %}" alt="Form Art" />
+  </div>
+
+</div>
 {% endblock %}

@@ -1,220 +1,189 @@
 .typeface-container {
-    padding: 35px 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .typeface-img {
-    width: 75%;
-    max-width: 350px;
-  }
-  
-  .usr-img {
-    width: 100%;
-    border-radius: var(--card-border-radius);
-  }
-  
-  .typeface-details {
-    width: 98%;
-  }
-  
-  .typeface-actions {
-    margin-top: 20px;
-  }
-  
-  .feedings-toy-container {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 20px;
-    align-items: center;
-  }
-  
-  .subsection-title {
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px;
-  }
-  
-  .subsection-content {
-    margin: 0 8px;
-  }
-  
-  .toy-container {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  
-  .color-block {
-    opacity: 0.8;
-    height: 25px;
-    width: 25px;
-    margin-right: 10px;
-  }
-  
-  .unfed,
-  .fed,
-  .no-toys,
-  .all-toys {
-    margin: 0;
-    font-weight: bold;
-  }
-  
-  .unfed,
-  .no-toys {
-    color: var(--danger);
-  }
-  
-  .fed,
-  .all-toys {
-    color: var(--submit);
-  }
-  
-  .typeface-details h1 {
-    font-size: var(--font-xxl);
-    margin: 15px 0 3px;
-  }
-  
-  .typeface-details h2 {
-    font-size: var(--font-xl);
-    margin: 0 0 10px;
-    margin-top: 0;
-    margin-bottom: 10px;
-  }
-  
-  .typeface-details h3 {
-    margin: 20px 0 10px;
-    font-size: var(--font-l);
-  }
-  
-  .typeface-details p {
-    font-size: var(--font-reg);
-    margin: 5px 0;
-  }
-  
-  .feedings-toy-container > section {
-    width: 80%;
-    min-width: 360px;
-    border: var(--borders);
-    border-radius: var(--card-border-radius);
-    padding: 10px;
-    box-shadow: var(--card-box-shadow);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  
-  .subsection-title img {
-    height: 42px;
-    margin-left: 8px;
-  }
-  
-  .subsection-title img:first-of-type {
-    margin-left: 16px;
-  }
-  
-  .feedings h2,
-  .toys h2 {
-    font-size: 3.2rem;
-    margin: 0;
-  }
-  
-  .feedings h3,
-  .toys h3 {
-    font-size: var(--font-xl);
-    margin: 10px 0;
-  }
-  
-  .subsection-content p,
-  .subsection-content input,
-  .subsection-content select {
-    font-size: var(--font-l);
-  }
-  
-  .subsection-content input,
-  .subsection-content select {
-    margin-left: 5px;
-    padding: 3px;
-  }
-  
-  .feedings table {
-    width: calc(100% - 16px);
-    text-align: left;
-    border-collapse: collapse;
-    margin: 0 8px;
-  }
-  
-  .feedings td {
-    padding: 8px 5px;
-    font-size: var(--font-reg);
-  }
-  
-  .feedings th {
-    font-size: var(--font-l);
-    padding: 5px 5px 0;
-    border-bottom: rgb(36, 116, 248) solid 2px;
-  }
-  
-  .feedings tr:nth-child(even) {
-    background-color: #f3f3fd;
-  }
-  
-  .toy-container p {
-    margin: 12px 0;
-  }
-  
-  .toy-container a {
-    text-decoration: none;
-    color: #111;
-  }
-  
-  .toy-container .btn {
-    padding: 3px 10px;
-    margin-left: 10px;
-  }
-  
-  #file-input {
-    overflow: hidden;
-    position: absolute;
-    width: 0.1px;
-    height: 0.1px;
-  }
-  
-  #file-name {
-    margin-bottom: 10px;
-  }
-  
-  @media only screen and (min-width: 768px) {
-    .typeface-container {
-      padding: 35px 30px;
-      flex-direction: row;
-      align-items: center;
-      justify-content: start;
-    }
-  
-    .typeface-img {
-      width: 25%;
-      max-width: 250px;
-      margin-right: 25px;
-    }
-  
-    .feedings-toy-container {
-      flex-direction: row;
-      justify-content: space-around;
-      align-items: flex-start;
-    }
-  
-    .feedings-toy-container > section {
-      width: 45%;
-    }
-  }
-  
-  @media only screen and (min-width: 1024px) {
-    .feedings-toy-container {
-      padding: 0 40px;
-    }
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 90px 80px;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.typeface-top {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  width: 100%;
+  align-items: flex-end;
+}
+
+.typeface-img img {
+  width: 400px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid white;
+}
+
+.typeface-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-width: 600px;
+}
+
+.typeface-details h1 {
+  font-size: var(--font-xxl);
+  margin-bottom: 10px;
+}
+
+.typeface-details h2,
+.typeface-details p {
+  font-size: var(--font-reg);
+  margin: 6px 0;
+}
+
+.typeface-details a {
+  color: var(--link-hover-color);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.typeface-details a.download-link {
+  font-size: var(--font-l);
+  text-decoration: underline;
+  font-weight: 400;
+  color: var(--link-hover-color);
+  display: inline-block;
+  margin: 8px 0;
+  color: #fc4b03;
+
+}
+
+.typeface-actions {
+  margin-top: 16px;
+  display: flex;
+  gap: 12px;
+}
+
+/* Bottom Section: Ratings + Pairings */
+.bottom-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 40px;
+  width: 100%;
+}
+
+.rates-container,
+.pairings {
+  flex: 1;
+  min-width: 300px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid white;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+/* Increase font sizes for readability */
+.rates-container h2,
+.pairings h2 {
+  font-size: var(--font-xl);
+  margin-bottom: 10px;
+}
+
+.rates-container h3,
+.pairings h3 {
+  font-size: var(--font-l);
+  margin: 16px 0 8px;
+}
+
+.rates-container label,
+.pairings p,
+.pairings .no-pairings,
+.pairings .no-more {
+  font-size: var(--font-reg);
+}
+
+form .form-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+form label {
+  margin-bottom: 6px;
+  font-size: var(--font-reg);
+}
+
+form input,
+form textarea,
+form select {
+  background: #111;
+  color: white;
+  border: 1px solid white;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: var(--font-reg);
+}
+
+/* Notes Table Styling */
+.notes-table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.notes-table thead th {
+  font-size: var(--font-reg);
+  text-align: left;
+  padding-bottom: 8px;
+  border-bottom: 1px solid white;
+}
+
+.notes-table tbody tr {
+  border-bottom: 1px solid white;
+}
+
+.notes-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.notes-table td {
+  padding: 12px 0;
+  font-size: var(--font-reg);
+  vertical-align: top;
+}
+
+/* Delete Note Button */
+.delete-note-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.8rem;
+  padding: 0;
+  margin-left: 10px;
+}
+
+/* -------------------- NEW: Pairing Line Styling -------------------- */
+.pairing-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin: 8px 0;
+}
+
+.pairing-container a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.pairing-container p {
+  margin: 0;
+  font-size: var(--font-reg);
+  flex-grow: 1;
+}
+
+.pairing-container form {
+  margin: 0;
+}

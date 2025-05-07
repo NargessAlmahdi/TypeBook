@@ -8,22 +8,25 @@
 {% block content %}
 
 <section class="page-header">
-  <h1>Typeface List</h1>
+  <h1>All Typefaces</h1>
 </section>
 
 <section class="card-container">
   {% for typeface in typefaces %}
-    <div class="card">
-    <a href="{% url 'typeface-detail' typeface.id %}">
-      <div class="card-content">
+  <div class="card">
+    <div class="card-content">
+      <a href="{% url 'typeface-detail' typeface.id %}">
         <div class="card-img-container">
-            <img src="{{ typeface.image.url }}" alt="{{ typeface.name }} image" />
+          <img src="{{ typeface.image.url }}" alt="{{ typeface.name }} image" />
         </div>
-        <h2 class="card-title">{{ typeface.name }}</h2>
-        <p><strong>Designer:</strong> {{ typeface.designer }}</p>
-        <p><strong>Classification:</strong> {{ typeface.classification }}</p>
-        <a href="{{ typeface.link }}" target="_blank">Download Link</a>
-      </div>
+      </a>
+      <h2 class="card-title">{{ typeface.name }}</h2>
+      <p><strong>Designer:</strong> {{ typeface.designer }}</p>
+      <p><strong>Classification:</strong> {{ typeface.classification }}</p>
+      <a href="{{ typeface.link }}" target="_blank" class="download-link">Download</a>
+    </div>
+  </div>
+  
     </a>
     </div>
   {% endfor %}

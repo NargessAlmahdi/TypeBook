@@ -4,126 +4,123 @@
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/typefaces/typeface-detail.css' %}" />
 {% endblock %} 
-
 {% block content %}
+
 <section class="typeface-container">
-  <div class="typeface-img">
-    <img src="{{ typeface.image.url }}" alt="{{ typeface.name }} preview" />
-  </div>
+<div class="typeface-top">
+<div class="typeface-img">
+<img src="{{ typeface.image.url }}" alt="{{ typeface.name }} preview" />
+</div>
 
-  <div class="typeface-details">
-    <h1>{{ typeface.name }}</h1>
-    <h2>Designed by {{ typeface.designer }}</h2>
-    <p><strong>Classification:</strong> {{ typeface.classification }}</p>
-    <p><strong>Download:</strong> 
-      <a href="{{ typeface.link }}" target="_blank">{{ typeface.link }}</a>
-    </p>
+<div class="typeface-details">
+<h1>{{ typeface.name }}</h1>
+<h2>Designed by {{ typeface.designer }}</h2>
+<p><strong>Classification:</strong> {{ typeface.classification }}</p>
+<a href="{{ typeface.link }}" target="_blank" class="download-link">Download</a>
 
-    <div class="typeface-actions">
-      <a href="{% url 'typeface-update' typeface.id %}" class="btn warn">Edit</a>
-      <a href="{% url 'typeface-delete' typeface.id %}" class="btn danger">Delete</a>
-    </div>
 
-    <div class="rates-container">
-      <section class="rates">
-        <div class="subsection-title">
-          <h2>Ratings & Notes</h2>
-        </div>
+<div class="typeface-actions">
+<a href="{% url 'typeface-update' typeface.id %}" class="btn warn">Edit</a>
+<a href="{% url 'typeface-delete' typeface.id %}" class="btn danger">Delete</a>
+</div>
+</div>
+</div>
 
-        <h3>Rating and Notes</h3>
-        <form action="{% url 'add-rating-note' typeface.id %}" method="post" autocomplete="off" class="Rating-form">
-          {% csrf_token %}
-          <div class="form-row">
-            <label for="id_rating">Rating:</label>
-            {{ rating_form.rating }}
-          </div>
+<div class="bottom-section">
 
-          <div class="form-row">
-            <label for="id_note">Note:</label>
-            {{ note_form.note }}
-          </div>
+<div class="rates-container">
+<h2>Ratings & Notes</h2>
 
-          <button type="submit" class="btn submit">Submit</button>
-        </form>
+<form action="{% url 'add-rating-note' typeface.id %}" method="post" autocomplete="off" class="Rating-form">
+{% csrf_token %}
+<div class="form-row">
+<label for="id_rating">Rating:</label>
+{{ rating_form.rating }}
+</div>
 
-        <h3>All Notes</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Note</th>
-              <th>Date</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for note in typeface.note_set.all %}
-              <tr>
-                <td>{{ note.note }}</td>
-                <td>{{ note.created_at|date:"M d, Y" }}</td>
-                <td>
-                  {% if user == note.user %}
-                    <form method="POST" action="{% url 'delete-note' note.id %}">
-                      {% csrf_token %}
-                      <button type="submit" style="background: none; border: none; color: red; cursor: pointer;">✕</button>
-                    </form>
-                  {% endif %}
-                </td>
-              </tr>
-            {% empty %}
-              <tr>
-                <td colspan="3">No notes yet.</td>
-              </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </section>
-    </div>
+<div class="form-row">
+<label for="id_note">Note:</label>
+{{ note_form.note }}
+</div>
 
-    <!-- ✅ Class-Style Pairing Section -->
-    <section class="pairings">
-      <div class="subsection-title">
-        <h2>Pairings</h2>
-      </div>
+<button type="submit" class="btn submit">Submit</button>
+</form>
 
-      <!-- Current Pairings -->
-      <h3>{{ typeface.name }}’s Pairings</h3>
-      <div class="subsection-content">
-        {% if typeface.pairings.count %}
-          {% for pairing in typeface.pairings.all %}
-            <div class="pairing-container">
-              <a href="{% url 'pairing-detail' pairing.id %}">
-                <p>{{ pairing.name }}</p>
-              </a>
-              <form action="{% url 'remove-pairing' typeface.id pairing.id %}" method="post">
-                {% csrf_token %}
-                <button type="submit" class="btn danger">Remove</button>
-              </form>
-            </div>
-          {% endfor %}
-        {% else %}
-          <p class="no-pairings">{{ typeface.name }} doesn’t have any pairings yet!</p>
-        {% endif %}
-      </div>
+<h3>All Notes</h3>
+<table class="notes-table">
+<thead>
+<tr>
+<th>Note</th>
+<th>Date</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
 
-      <!-- Available Pairings -->
-      <h3>Available Pairings</h3>
-      <div class="subsection-content">
-        {% if pairings.count %}
-          {% for pairing in pairings %}
-            <div class="pairing-container">
-              <p>{{ pairing.name }}</p>
-              <form action="{% url 'assoc-pairing' typeface.id pairing.id %}" method="post">
-                {% csrf_token %}
-                <button type="submit" class="btn submit">Pair it</button>
-              </form>
-            </div>
-          {% endfor %}
-        {% else %}
-          <p class="no-more">{{ typeface.name }} is already paired with all available pairings! 🎉</p>
-        {% endif %}
-      </div>
-    </section>
+{% for note in typeface.note_set.all %}
+<tr>
+<td>{{ note.note }}</td>
+<td>{{ note.created_at|date:"M d, Y" }}</td>
+<td>
+{% if user == note.user %}
+<form method="POST" action="{% url 'delete-note' note.id %}">
+{% csrf_token %}
+<button type="submit" style="background: none; border: none; color: #fc4b03; cursor: pointer;">✕</button>
+</form>
+{% endif %}
+</td>
+</tr>
+{% empty %}
+<tr>
+<td colspan="3">No notes yet.</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+      
+</div>
 
-  </div>
+<section class="pairings">
+<h2>Pairings</h2>
+<h3>{{ typeface.name }}’s Pairings</h3>
+<div class="subsection-content">
+{% if typeface.pairings.count %}
+{% for pairing in typeface.pairings.all %}
+<div class="pairing-container">
+<a href="{% url 'pairing-detail' pairing.id %}">
+<p>{{ pairing.name }}</p>
+</a>
+<form action="{% url 'remove-pairing' typeface.id pairing.id %}" method="post">
+{% csrf_token %}
+<button type="submit" class="btn danger" style="background: none; border: none; color: #fc4b03; cursor: pointer;">✕</button>
+</form>
+</div>
+{% endfor %}
+{% else %}
+<p class="no-pairings">{{ typeface.name }} doesn’t have any pairings yet!</p>
+{% endif %}
+</div>
+
+
+<h3>Available Pairings</h3>
+<div class="subsection-content">
+{% if pairings.count %}
+{% for pairing in pairings %}
+<div class="pairing-container">
+<p>{{ pairing.name }}</p>
+ <form action="{% url 'assoc-pairing' typeface.id pairing.id %}" method="post">
+{% csrf_token %}
+<button type="submit" class="btn submit">Pair it</button>
+</form>
+</div>
+{% endfor %}
+{% else %}
+<p class="no-more">{{ typeface.name }} is already paired with all available pairings!</p>
+{% endif %}
+</div>
+</section>
+
+</div>
+
 </section>
 {% endblock %}

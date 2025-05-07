@@ -6,20 +6,27 @@
 {% endblock %} 
 
 {% block content %}
+<div class="form-page">
+  <div class="form-section">
+    <div class="page-header">
+      {% if typeface %}
+        <h1>Edit {{ typeface.name }}</h1>
+      {% else %}
+        <h1>Add Typeface</h1>
+      {% endif %}
+    </div>
 
-<div class="page-header">
-    {% if typeface %}
-      <h1>Edit {{ typeface.name }}</h1>
-    {% else %}
-      <h1>Add a Typeface</h1>
-    {% endif %}
+    <form action="" method="post" enctype="multipart/form-data" class="form-container">
+      {% csrf_token %}
+      <table>
+        {{ form.as_table }}
+      </table>
+      <button type="submit" class="btn submit">Add</button>
+    </form>
   </div>
 
-<form action="" method="post" enctype="multipart/form-data" class="form-container">
-  {% csrf_token %}
-  <table>
-    {{ form.as_table }}
-  </table>
-  <button type="submit" class="btn submit">Submit!</button>
-</form>
+  <div class="graphic-section">
+    <img src="{% static 'images/form-image.svg' %}" alt="Form Art" />
+  </div>
+</div>
 {% endblock %}

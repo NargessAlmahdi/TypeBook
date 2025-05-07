@@ -6,15 +6,14 @@
 {% endblock %} 
 
 {% block content %}
-
-<div class="card">
+<section class="card">
+  <img src="{{ pairing.image.url }}" alt="{{ pairing.name }}" />
   <div class="card-content">
     <h2>{{ pairing.name }}</h2>
-    <img src="{{ pairing.image.url }}" alt="{{ pairing.name }}" style="max-width: 100%; max-height: 300px;" />
+    <div class="actions">
+      <a href="{% url 'pairing-update' pairing.id %}" class="btn warn">Edit</a>
+      <a href="{% url 'pairing-delete' pairing.id %}" class="btn danger">Delete</a>
+    </div>
   </div>
-</div>
-
-<a href="{% url 'pairing-update' pairing.id %}" class="btn warn">Edit</a>
-<a href="{% url 'pairing-delete' pairing.id %}" class="btn danger">Delete</a>
-
+</section>
 {% endblock %}
